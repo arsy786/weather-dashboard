@@ -1,9 +1,12 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const { default: axios } = require("axios");
+const cors = require("cors");
+const axios = require("axios");
 
 const app = express();
 dotenv.config();
+
+app.use(cors({ origin: true, credentials: true }));
 
 app.get("/", (req, res) => {
 	res.send("Weather Dashboard API is running.");
