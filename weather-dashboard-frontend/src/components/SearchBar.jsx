@@ -1,7 +1,9 @@
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchIcon from "@mui/icons-material/Search";
-import { Container, TextField } from "@mui/material";
-import axios from "axios";
+import { Container, IconButton, TextField } from "@mui/material";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getWeatherData } from "../redux/reducers/weatherSlice";
 
 const centerStyle = {
 	display: "flex",
@@ -11,24 +13,24 @@ const centerStyle = {
 };
 
 const SearchBar = () => {
-	const [searchTerm, setSearchTerm] = useState("");
+	const [city, setCity] = useState("");
+	const dispatch = useDispatch();
 
-	const getWeatherData = async (location) => {
-		try {
-			const res = await axios.get(`http://localhost:3001/weather/${location}`);
-			console.log(res);
-		} catch (error) {
-			console.log(error);
-		}
+	const handleSearch = async (city) => {
+		dispatch(getWeatherData(city));
 	};
 
 	const handleChange = (e) => {
-		setSearchTerm(e.target.value);
+		setCity(e.target.value);
+	};
+
+	const handleOnClick = (city) => {
+		handleSearch(city);
 	};
 
 	const handleKeyPress = async (e) => {
 		if (e.key === "Enter") {
-			getWeatherData(searchTerm);
+			handleSearch(city);
 		}
 	};
 
@@ -37,13 +39,18 @@ const SearchBar = () => {
 			<TextField
 				id="search"
 				type="search"
-				label="Search"
-				value={searchTerm}
+				label="Enter City"
+				value={city}
 				onChange={handleChange}
 				onKeyPress={handleKeyPress}
 				sx={{ width: 600 }}
 				InputProps={{
-					endAdornment: <SearchIcon />,
+					startAdornment: <LocationOnIcon />,
+					endAdornment: (
+						<IconButton onClick={handleOnClick}>
+							<SearchIcon />
+						</IconButton>
+					),
 				}}
 			/>
 		</Container>
