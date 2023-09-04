@@ -5,7 +5,6 @@ import WeatherDisplay from "./components/WeatherDisplay";
 function App() {
 	return (
 		<>
-			<h1>Weather Dashboard App</h1>
 			<SearchBar />
 			<WeatherDisplay />
 			<NotFound />

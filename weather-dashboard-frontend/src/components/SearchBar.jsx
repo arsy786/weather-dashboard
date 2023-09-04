@@ -5,11 +5,16 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getWeatherData } from "../redux/reducers/weatherSlice";
 
-const centerStyle = {
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center",
-	minHeight: "25vh",
+const styles = {
+	container: {
+		display: "flex",
+		justifyContent: "center",
+		alignItems: "center",
+		minHeight: "25vh",
+	},
+	field: {
+		width: 600,
+	},
 };
 
 const SearchBar = () => {
@@ -35,7 +40,7 @@ const SearchBar = () => {
 	};
 
 	return (
-		<Container style={centerStyle}>
+		<Container style={styles.container}>
 			<TextField
 				id="search"
 				type="search"
@@ -43,7 +48,7 @@ const SearchBar = () => {
 				value={city}
 				onChange={handleChange}
 				onKeyPress={handleKeyPress}
-				sx={{ width: 600 }}
+				sx={styles.field}
 				InputProps={{
 					startAdornment: <LocationOnIcon />,
 					endAdornment: (

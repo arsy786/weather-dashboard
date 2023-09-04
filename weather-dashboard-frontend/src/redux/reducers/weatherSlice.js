@@ -24,20 +24,21 @@ const weatherSlice = createSlice({
 		// 	state.value = action.payload;
 		// },
 	},
-	extraReducers: {
-		[getWeatherData.pending]: (state) => {
-			state.isLoading = true;
-			state.error = false;
-		},
-		[getWeatherData.fulfilled]: (state, action) => {
-			state.isLoading = false;
-			state.error = false;
-			state.data = action.payload;
-		},
-		[getWeatherData.rejected]: (state) => {
-			state.isLoading = false;
-			state.error = true;
-		},
+	extraReducers: (builder) => {
+		builder
+			.addCase(getWeatherData.pending, (state) => {
+				state.isLoading = true;
+				state.error = false;
+			})
+			.addCase(getWeatherData.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.error = false;
+				state.data = action.payload;
+			})
+			.addCase(getWeatherData.rejected, (state) => {
+				state.isLoading = false;
+				state.error = true;
+			});
 	},
 });
 
