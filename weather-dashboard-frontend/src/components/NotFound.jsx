@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 
 const styles = {
@@ -26,15 +26,15 @@ export const NotFound = () => {
 	}
 
 	return (
-		<Container sx={styles.container}>
-			<Box>
+		<Grid container sx={styles.container}>
+			<Grid item xs={8}>
 				<Box
 					component="img"
 					sx={styles.image}
 					src="../images/not-found.png"
 				></Box>
 				<Typography sx={styles.text}>Oops! Invalid location.</Typography>
-			</Box>
-		</Container>
+			</Grid>
+		</Grid>
 	);
 };
