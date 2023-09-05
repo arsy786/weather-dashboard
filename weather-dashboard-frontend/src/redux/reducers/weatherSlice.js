@@ -5,9 +5,7 @@ export const getWeatherData = createAsyncThunk(
 	"weather/getWeatherData",
 	async (city) => {
 		const res = await axios.get(`http://localhost:3001/weather/${city}`);
-		// console.log(res);
 		const data = res.data;
-		console.log(data);
 		return data;
 	}
 );

@@ -13,17 +13,22 @@ const styles = {
 		flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
+		pb: 2,
 	},
 	largeImage: {
 		width: 250,
 	},
 	smallImage: {
 		width: 50,
-		marginRight: "1rem", // Add spacing between label and value
+		marginRight: "1rem",
 	},
 	temperature: {
 		fontSize: "2rem",
 		fontWeight: "bold",
+		textAlign: "center",
+	},
+	description: {
+		textAlign: "center",
 	},
 	loading: {
 		display: "flex",
@@ -32,17 +37,17 @@ const styles = {
 	},
 	infoRow: {
 		display: "flex",
-		justifyContent: "center", // x position
-		alignItems: "center", // y position
-		marginBottom: "0.5rem", // Add margin for spacing
-		flexDirection: "row", // Change to column layout
+		justifyContent: "center",
+		alignItems: "center",
+		flexDirection: "row",
+		pb: 2,
 	},
 	infoLabel: {
 		fontSize: "1.2rem",
 		fontWeight: "bold",
 	},
 	infoValue: {
-		fontSize: "1.2rem", // Increase the font size
+		fontSize: "1.2rem",
 	},
 };
 
@@ -69,7 +74,6 @@ const WeatherDisplay = () => {
 	const humidity = weatherData.main.humidity;
 	const wind = Math.round(weatherData.wind.speed * 3.6);
 
-	// Create a mapping of weather types to image URLs
 	const weatherImages = {
 		Clear: "../images/clear.png",
 		Rain: "../images/rain.png",
@@ -81,7 +85,6 @@ const WeatherDisplay = () => {
 		Mist: "../images/mist.png",
 	};
 
-	// Determine the image URL based on weatherType
 	const imageUrl = weatherImages[weatherType] || "no-results.jpg";
 
 	return (
@@ -100,13 +103,15 @@ const WeatherDisplay = () => {
 						<Typography sx={styles.temperature} variant="h2">
 							{temperature}°C
 						</Typography>
-						<Typography>{weatherDesc}</Typography>
+						<Typography sx={styles.description} variant="h5">
+							{weatherDesc}
+						</Typography>
 					</Box>
 				</Grid>
 			</Grid>
 
 			<Grid container sx={styles.infoRow}>
-				<Grid item xs={4} sx={styles.infoRow}>
+				<Grid item xs={8} md={4} sx={styles.infoRow}>
 					<Box
 						component="img"
 						sx={styles.smallImage}
@@ -117,7 +122,7 @@ const WeatherDisplay = () => {
 						<Typography sx={styles.infoLabel}>Humidity</Typography>
 					</Box>
 				</Grid>
-				<Grid item xs={4} sx={styles.infoRow}>
+				<Grid item xs={8} md={4} sx={styles.infoRow}>
 					<Box
 						component="img"
 						sx={styles.smallImage}

@@ -10,10 +10,12 @@ const styles = {
 		minHeight: "25vh",
 	},
 	image: {
-		width: 400,
+		width: 250,
 	},
 	text: {
 		fontSize: "2rem",
+		fontWeight: "bold",
+		color: "#d95027",
 		textAlign: "center",
 	},
 };
@@ -27,13 +29,9 @@ export const NotFound = () => {
 
 	return (
 		<Grid container sx={styles.container}>
-			<Grid item xs={8}>
-				<Box
-					component="img"
-					sx={styles.image}
-					src="../images/not-found.png"
-				></Box>
-				<Typography sx={styles.text}>Oops! Invalid location.</Typography>
+			<Grid item xs={8} sx={styles.container}>
+				<Box component="img" sx={styles.image} src="../images/not-found.png" />
+				<Typography sx={styles.text}>Invalid location!</Typography>
 			</Grid>
 		</Grid>
 	);

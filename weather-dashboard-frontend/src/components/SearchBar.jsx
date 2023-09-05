@@ -11,9 +11,10 @@ const styles = {
 		justifyContent: "center",
 		alignItems: "center",
 		flexDirection: "column",
+		p: 5,
 	},
 	textField: {
-		width: 600,
+		width: { sm: 300, md: 600 },
 	},
 };
 
@@ -29,7 +30,7 @@ const SearchBar = () => {
 		setCity(e.target.value);
 	};
 
-	const handleOnClick = (city) => {
+	const handleOnClick = () => {
 		handleSearch(city);
 	};
 
@@ -41,7 +42,7 @@ const SearchBar = () => {
 
 	return (
 		<Grid container sx={styles.searchBox}>
-			<Grid item xs={8}>
+			<Grid item xs={8} lg={8}>
 				<TextField
 					id="search"
 					type="search"
