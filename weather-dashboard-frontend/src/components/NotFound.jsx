@@ -14,6 +14,7 @@ const styles = {
 	},
 	text: {
 		fontSize: "2rem",
+		textAlign: "center",
 	},
 };
 
@@ -32,7 +33,7 @@ export const NotFound = () => {
 					sx={styles.image}
 					src="../images/not-found.png"
 				></Box>
-				<Typography sx={styles.text}>Oops! Invalid location :/</Typography>
+				<Typography sx={styles.text}>Oops! Invalid location.</Typography>
 			</Box>
 		</Container>
 	);

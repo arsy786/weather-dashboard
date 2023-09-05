@@ -11,7 +11,7 @@ const styles = {
 		minHeight: "25vh",
 	},
 	image: {
-		width: 400,
+		width: 250,
 	},
 	temperature: {
 		fontSize: "2rem",
@@ -31,7 +31,7 @@ const WeatherDisplay = () => {
 	const weatherType = weatherData.weather[0].main;
 	const weatherDesc = weatherData.weather[0].description;
 	const humidity = weatherData.main.humidity;
-	const wind = Math.round(weatherData.wind.speed);
+	const wind = Math.round(weatherData.wind.speed * 3.6);
 
 	// Create a mapping of weather types to image URLs
 	const weatherImages = {
@@ -42,6 +42,7 @@ const WeatherDisplay = () => {
 		Thunderstorm: "../images/thunderstorm.png",
 		Drizzle: "../images/drizzle.png",
 		Atmosphere: "../images/mist.png",
+		Mist: "../images/mist.png",
 	};
 
 	// Determine the image URL based on weatherType
@@ -64,7 +65,7 @@ const WeatherDisplay = () => {
 			</Box>
 			<Box>{weatherDesc}</Box>
 			<Box>Humidity: {humidity}%</Box>
-			<Box>Wind: {wind}mph</Box>
+			<Box>Wind: {wind}kmh</Box>
 		</Container>
 	);
 };
