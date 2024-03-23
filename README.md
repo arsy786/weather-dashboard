@@ -1,30 +1,79 @@
 # Weather Dashboard
 
-## Introduction
-
-This is a basic weather app built using NodeJS and React. When a user enters a valid location into the search box, the current weather for that region is displayed. This is a project used to test my fullstack abilities using modern technologies and methodologies.
+This is a basic weather app built using NodeJS and React. When a user enters a valid location into the search box, the current weather for that region is displayed.
 
 ## Installation
 
-To install this application, you will need to have Node.js installed on your system.
+This project is divided into two main parts: the backend (API server) and the frontend (user interface). Follow these steps to set up and run both parts of the application.
 
-Once you have these installed, follow these steps:
+### Prerequisites
 
-1. Clone the repository: `git clone https://github.com/arsy786/weather-dashboard.git`
-2. Install the dependencies:
+- Node.js
 
-- `cd weather-dashboard/weather-dashboard-backend && npm install`
-- `cd weather-dashboard/weather-dashboard-frontend && npm install`
+### Cloning the Repo
 
-3. Set up the environment variables: create a .env file in the weather-dashboard-backend directory with the following variables:
+1. Open your terminal or command prompt.
 
-```makefile
-WEATHER_API_KEY=<YOUR_API_KEY>
-```
+2. Clone the repository using Git:
 
-Note: [OpenWeatherMap API](https://openweathermap.org/api)
+   ```bash
+   git clone https://github.com/arsy786/weather-dashboard.git
+   ```
 
-4. Start the backend and frontend development servers:
+### Setting up the Backend
 
-- Backend: `cd weather-dashboard/weather-dashboard-backend && npm run dev`
-- Frontend: `cd weather-dashboard/weather-dashboard-frontend && npm run dev`
+1. Navigate to the backend directory:
+
+   ```bash
+   cd weather-dashboard/weather-dashboard-backend
+   ```
+
+2. Install the required Node.js modules:
+
+   ```bash
+   npm install
+   ```
+
+3. Set up the environment variables by creating a `.env` file in the `weather-dashboard-backend` directory with the following content:
+
+   ```env
+   WEATHER_API_KEY=<YOUR_API_KEY>
+   ```
+
+   Note: Obtain your API key from [OpenWeatherMap API](https://openweathermap.org/api)
+
+4. Start the backend development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   The backend server should now be running on `http://localhost:3001`.
+
+### Setting up the Frontend
+
+1. Open a new terminal or command prompt window.
+
+2. Navigate to the frontend directory from the root of the cloned repository:
+
+   ```bash
+   cd weather-dashboard/weather-dashboard-frontend
+   ```
+
+3. Install the required Node.js modules:
+
+   ```bash
+   npm install
+   ```
+
+4. Start the backend development server:
+
+   ```bash
+   npm run dev
+   ```
+
+   This command runs the frontend part of the app in development mode. Open `http://localhost:3000` to view it in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
+
+### Accessing the Application
+
+After starting both the backend and frontend servers, you can access the web application by navigating to `http://localhost:3000` in your web browser. Ensure both servers are running concurrently to allow the frontend to communicate with the backend effectively.
