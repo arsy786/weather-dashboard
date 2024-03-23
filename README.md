@@ -40,7 +40,9 @@ This project is divided into two main parts: the backend (API server) and the fr
    WEATHER_API_KEY=<YOUR_API_KEY>
    ```
 
-   Note: Obtain your API key from [OpenWeatherMap API](https://openweathermap.org/api)
+   Note: To get an API key, register at [OpenWeatherMap API](https://openweathermap.org/api).
+   <br>
+   Note: For guidance on finding and using your key, see [this article](https://openweathermap.org/appid).
 
 4. Start the backend development server:
 

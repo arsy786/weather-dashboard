@@ -77,7 +77,7 @@ const WeatherDisplay = () => {
 	const weatherImages = {
 		Clear: "../images/clear.png",
 		Rain: "../images/rain.png",
-		Snow: "../images/snow.jpg",
+		Snow: "../images/snow.png",
 		Clouds: "../images/cloudy.png",
 		Thunderstorm: "../images/thunderstorm.png",
 		Drizzle: "../images/drizzle.png",

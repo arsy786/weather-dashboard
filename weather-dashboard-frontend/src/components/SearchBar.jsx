@@ -53,7 +53,7 @@ const SearchBar = () => {
 					onKeyPress={handleKeyPress}
 					sx={styles.textField}
 					InputProps={{
-						startAdornment: <LocationOnIcon />,
+						startAdornment: <LocationOnIcon sx={{ marginRight: "6px" }} />,
 						endAdornment: (
 							<IconButton onClick={handleOnClick}>
 								<SearchIcon />

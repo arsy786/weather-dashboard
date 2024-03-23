@@ -17,11 +17,6 @@ const weatherSlice = createSlice({
 		isLoading: false,
 		error: false,
 	},
-	reducers: {
-		// setWeatherData: (state, action) => {
-		// 	state.value = action.payload;
-		// },
-	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getWeatherData.pending, (state) => {
