@@ -68,13 +68,13 @@ This project is divided into two main parts: the backend (API server) and the fr
    npm install
    ```
 
-4. Start the backend development server:
+4. Start the frontend development server:
 
    ```bash
    npm run dev
    ```
 
-   This command runs the frontend part of the app in development mode. Open `http://localhost:3000` to view it in your browser. The page will reload if you make edits. You will also see any lint errors in the console.
+   The frontend server should now be running on `http://localhost:3000`.
 
 ### Accessing the Application
 
