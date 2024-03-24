@@ -20,12 +20,18 @@ This project is divided into two main parts: the backend (API server) and the fr
    git clone https://github.com/arsy786/weather-dashboard.git
    ```
 
-### Setting up the Backend
-
-1. Navigate to the backend directory:
+3. Navigate to the cloned repository's root directory
 
    ```bash
-   cd weather-dashboard/weather-dashboard-backend
+   cd weather-dashboard
+   ```
+
+### Setting up the Backend
+
+1. From the root directory, navigate to the backend directory:
+
+   ```bash
+   cd weather-dashboard-backend
    ```
 
 2. Install the required Node.js modules:
@@ -56,10 +62,10 @@ This project is divided into two main parts: the backend (API server) and the fr
 
 1. Open a new terminal or command prompt window.
 
-2. Navigate to the frontend directory from the root of the cloned repository:
+2. From the root directory, navigate to the frontend directory:
 
    ```bash
-   cd weather-dashboard/weather-dashboard-frontend
+   cd weather-dashboard-frontend
    ```
 
 3. Install the required Node.js modules:
