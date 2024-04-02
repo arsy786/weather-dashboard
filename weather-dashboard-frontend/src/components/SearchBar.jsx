@@ -1,9 +1,9 @@
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchIcon from "@mui/icons-material/Search";
-import { Grid, IconButton, TextField } from "@mui/material";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getWeatherData } from "../redux/reducers/weatherSlice";
+import { Autocomplete, Grid, IconButton, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCities, getWeatherData } from "../redux/reducers/weatherSlice";
 
 const styles = {
 	searchBox: {
@@ -11,55 +11,69 @@ const styles = {
 		justifyContent: "center",
 		alignItems: "center",
 		flexDirection: "column",
-		p: 5,
+		py: 4,
 	},
 	textField: {
-		width: { sm: 300, md: 600 },
+		width: { sm: 200, md: 300 },
 	},
 };
 
 const SearchBar = () => {
 	const [city, setCity] = useState("");
 	const dispatch = useDispatch();
+	const options = useSelector((state) => state.weather.citiesData);
+
+	useEffect(() => {
+		if (city.length > 2) {
+			dispatch(getCities(city));
+		}
+	}, [city, dispatch]);
 
 	const handleSearch = async (city) => {
 		dispatch(getWeatherData(city));
 	};
 
-	const handleChange = (e) => {
-		setCity(e.target.value);
+	const handleInputChange = (event, newInputValue) => {
+		setCity(newInputValue);
 	};
 
 	const handleOnClick = () => {
 		handleSearch(city);
 	};
 
-	const handleKeyPress = async (e) => {
-		if (e.key === "Enter") {
-			handleSearch(city);
+	const handleOptionSelect = (event, newValue) => {
+		if (newValue) {
+			handleSearch(newValue);
 		}
 	};
 
 	return (
 		<Grid container sx={styles.searchBox}>
-			<Grid item xs={8} lg={8}>
-				<TextField
-					id="search"
-					type="search"
-					label=""
-					placeholder="Enter City"
-					value={city}
-					onChange={handleChange}
-					onKeyPress={handleKeyPress}
-					sx={styles.textField}
-					InputProps={{
-						startAdornment: <LocationOnIcon sx={{ marginRight: "6px" }} />,
-						endAdornment: (
-							<IconButton onClick={handleOnClick}>
-								<SearchIcon />
-							</IconButton>
-						),
-					}}
+			<Grid item xs={12} lg={12}>
+				<Autocomplete
+					freeSolo
+					id="city-search"
+					disableClearable
+					options={options}
+					inputValue={city}
+					onInputChange={handleInputChange}
+					onChange={handleOptionSelect}
+					renderInput={(params) => (
+						<TextField
+							{...params}
+							label="Enter City"
+							sx={styles.textField}
+							InputProps={{
+								...params.InputProps,
+								startAdornment: <LocationOnIcon sx={{ marginRight: "6px" }} />,
+								endAdornment: (
+									<IconButton onClick={handleOnClick}>
+										<SearchIcon />
+									</IconButton>
+								),
+							}}
+						/>
+					)}
 				/>
 			</Grid>
 		</Grid>

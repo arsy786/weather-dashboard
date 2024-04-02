@@ -13,27 +13,26 @@ const styles = {
 		flexDirection: "column",
 		alignItems: "center",
 		justifyContent: "center",
-		pb: 2,
+		pb: 5,
 	},
 	largeImage: {
-		width: 250,
+		width: 200,
 	},
 	smallImage: {
 		width: 50,
-		marginRight: "1rem",
+		marginRight: 1,
 	},
 	temperature: {
 		fontSize: "2rem",
 		fontWeight: "bold",
 		textAlign: "center",
+		pb: 2,
 	},
 	description: {
 		textAlign: "center",
 	},
 	loading: {
-		display: "flex",
-		justifyContent: "center",
-		size: "5em",
+		py: 5,
 	},
 	infoRow: {
 		display: "flex",
@@ -42,19 +41,26 @@ const styles = {
 		flexDirection: "row",
 		pb: 2,
 	},
-	infoLabel: {
-		fontSize: "1.2rem",
+	humidityLabel: {
+		fontSize: "1.1rem",
 		fontWeight: "bold",
 	},
-	infoValue: {
+	humidityValue: {
+		fontSize: "1.2rem",
+	},
+	windLabel: {
+		fontSize: "1.1rem",
+		fontWeight: "bold",
+	},
+	windValue: {
 		fontSize: "1.2rem",
 	},
 };
 
 const WeatherDisplay = () => {
-	const weatherData = useSelector((state) => state.weather.data);
-	const weatherDataError = useSelector((state) => state.weather.error);
-	const isLoading = useSelector((state) => state.weather.isLoading);
+	const weatherData = useSelector((state) => state.weather.weatherData);
+	const weatherDataError = useSelector((state) => state.weather.weatherError);
+	const isLoading = useSelector((state) => state.weather.weatherIsLoading);
 
 	if (!weatherData || !weatherData.main || weatherDataError) {
 		return null;
@@ -63,7 +69,7 @@ const WeatherDisplay = () => {
 	if (isLoading) {
 		return (
 			<Container sx={styles.container}>
-				<CircularProgress sx={styles.loading} />
+				<CircularProgress sx={styles.loading} size="4em" thickness="4" />
 			</Container>
 		);
 	}
@@ -90,7 +96,7 @@ const WeatherDisplay = () => {
 	return (
 		<>
 			<Grid container sx={styles.container}>
-				<Grid item xs={8} sx={styles.container}>
+				<Grid item xs={12}>
 					<Box>
 						<Box
 							component="img"
@@ -110,27 +116,27 @@ const WeatherDisplay = () => {
 				</Grid>
 			</Grid>
 
-			<Grid container sx={styles.infoRow}>
-				<Grid item xs={8} md={4} sx={styles.infoRow}>
+			<Grid container spacing={2} sx={styles.infoRow}>
+				<Grid item xs={6} md={6} sx={styles.infoRow}>
 					<Box
 						component="img"
 						sx={styles.smallImage}
 						src="../images/humidity.png"
 					/>
 					<Box>
-						<Typography sx={styles.infoValue}>{humidity}%</Typography>
-						<Typography sx={styles.infoLabel}>Humidity</Typography>
+						<Typography sx={styles.humidityValue}>{humidity}%</Typography>
+						<Typography sx={styles.humidityLabel}>Humidity</Typography>
 					</Box>
 				</Grid>
-				<Grid item xs={8} md={4} sx={styles.infoRow}>
+				<Grid item xs={6} md={6} sx={styles.infoRow}>
 					<Box
 						component="img"
 						sx={styles.smallImage}
 						src="../images/wind.png"
 					/>
 					<Box>
-						<Typography sx={styles.infoValue}>{wind} km/h</Typography>
-						<Typography sx={styles.infoLabel}>Wind Speed</Typography>
+						<Typography sx={styles.windValue}>{wind}km/h</Typography>
+						<Typography sx={styles.windLabel}>Wind Speed</Typography>
 					</Box>
 				</Grid>
 			</Grid>

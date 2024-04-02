@@ -10,31 +10,50 @@ export const getWeatherData = createAsyncThunk(
 	}
 );
 
+export const getCities = createAsyncThunk("weather/getCities", async (city) => {
+	const response = await axios.get(`http://localhost:3001/cities?name=${city}`);
+	return response.data;
+});
+
 const weatherSlice = createSlice({
 	name: "weather",
 	initialState: {
-		data: [],
-		isLoading: false,
-		error: false,
+		weatherData: [],
+		weatherIsLoading: false,
+		weatherError: false,
+		citiesData: [],
+		citiesIsLoading: false,
+		citiesError: false,
 	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(getWeatherData.pending, (state) => {
-				state.isLoading = true;
-				state.error = false;
+				state.weatherIsLoading = true;
+				state.weatherError = false;
 			})
 			.addCase(getWeatherData.fulfilled, (state, action) => {
-				state.isLoading = false;
-				state.error = false;
-				state.data = action.payload;
+				state.weatherIsLoading = false;
+				state.weatherError = false;
+				state.weatherData = action.payload;
 			})
 			.addCase(getWeatherData.rejected, (state) => {
-				state.isLoading = false;
-				state.error = true;
+				state.weatherIsLoading = false;
+				state.weatherError = true;
+			})
+			.addCase(getCities.pending, (state) => {
+				state.citiesIsLoading = true;
+				state.citiesError = false;
+			})
+			.addCase(getCities.fulfilled, (state, action) => {
+				state.citiesIsLoading = false;
+				state.citiesError = false;
+				state.citiesData = action.payload;
+			})
+			.addCase(getCities.rejected, (state) => {
+				state.citiesIsLoading = false;
+				state.citiesError = true;
 			});
 	},
 });
-
-export const { setWeatherData } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

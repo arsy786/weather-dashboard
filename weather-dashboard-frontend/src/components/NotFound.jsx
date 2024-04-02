@@ -8,20 +8,22 @@ const styles = {
 		alignItems: "center",
 		justifyContent: "center",
 		minHeight: "25vh",
+		pb: 2,
 	},
 	image: {
-		width: 250,
+		width: 200,
 	},
 	text: {
 		fontSize: "2rem",
 		fontWeight: "bold",
 		color: "#d95027",
 		textAlign: "center",
+		py: 2,
 	},
 };
 
 export const NotFound = () => {
-	const weatherDataError = useSelector((state) => state.weather.error);
+	const weatherDataError = useSelector((state) => state.weather.weatherError);
 
 	if (!weatherDataError) {
 		return null;
@@ -29,10 +31,10 @@ export const NotFound = () => {
 
 	return (
 		<Grid container sx={styles.container}>
-			<Grid item xs={8} sx={styles.container}>
+			<Grid item xs={12}>
 				<Box component="img" sx={styles.image} src="../images/not-found.png" />
-				<Typography sx={styles.text}>Invalid location!</Typography>
 			</Grid>
+			<Typography sx={styles.text}>Invalid location!</Typography>
 		</Grid>
 	);
 };
