@@ -1,10 +1,10 @@
 # Weather Dashboard
 
-This is a basic weather app built using NodeJS and React. When a user enters a valid location into the search box, the current weather for that region is displayed.
+This is a basic weather app built using NodeJS and React. When a user enters a valid location into the search box, the current weather for that region is displayed. This app utilizes Express and Node.js for server-side functionality, and React for a dynamic front-end user experience.
 
 ## Installation
 
-This project is divided into two main parts: the backend (API server) and the frontend (user interface). Follow these steps to set up and run both parts of the application.
+This project is divided into two main parts: the backend (API) and the frontend (UI). Follow these steps to set up and run both parts of the application.
 
 ### Prerequisites
 
@@ -44,11 +44,18 @@ This project is divided into two main parts: the backend (API server) and the fr
 
    ```env
    WEATHER_API_KEY=<YOUR_API_KEY>
+   PLACES_API_KEY=<YOUR_API_KEY>
    ```
 
-   Note: To get an API key, register at [OpenWeatherMap API](https://openweathermap.org/api).
-   <br>
-   Note: For guidance on finding and using your key, see [this article](https://openweathermap.org/appid).
+   WEATHER_API_KEY
+
+   - Register at [OpenWeatherMap API](https://openweathermap.org/api).
+   - Follow [this article](https://openweathermap.org/appid).
+
+   PLACES_API_KEY
+
+   - Register at [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview).
+   - Follow [this article](https://developers.google.com/maps/documentation/places/web-service/get-api-key).
 
 4. Start the backend development server:
 
