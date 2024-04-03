@@ -14,7 +14,7 @@ const styles = {
 		py: 4,
 	},
 	textField: {
-		width: { sm: 200, md: 300 },
+		width: { xs: 250, sm: 300, md: 300 },
 	},
 };
 

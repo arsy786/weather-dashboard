@@ -7,7 +7,8 @@ import WeatherDisplay from "./components/WeatherDisplay";
 const styles = {
 	app: {
 		backgroundColor: "#89bccd",
-		width: "400px",
+		width: "100%",
+		maxWidth: "400px",
 		margin: "50px auto",
 		padding: "10px",
 		borderRadius: "20px",
